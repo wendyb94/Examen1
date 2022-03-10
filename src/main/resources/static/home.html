@@ -1,0 +1,57 @@
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Home </title>
+<link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+    
+<!-- engloba toda nuestra aplicacion -->
+
+<div class="container">
+    
+<!-- engloba barra de opciones -->
+
+<div class="navbar">
+<img src="images/logo.png" alt=""/>
+</div>
+
+<!-- engloba nuestro contenido -->
+
+<div class="content">
+<h1>Eventos ITicket</h1>
+<p>Este no se cae como el otro</p>
+<img src="images/fotobadbunny.jpg" alt="alt" />
+</div>
+
+<h1>Listado de Eventos</h1>
+<table>
+    <thead class="thead-dark">
+<tr>
+<th scope="col">Costo </th>
+<th scope="col">fecha </th>
+<th scope="col">cant</th>
+<th scope="col">lugar </th>
+<th scope="col">artista </th>
+<th scope="col">Eliminar </th>
+</tr>
+    </thead>
+    <tbody>
+    <th:block th:each="user : ${concierto}">
+        <tr>
+            <td th:text="${user.getCosto}"></td>
+            <td th:text="${user.getFecha}"></td>
+            <td th:text="${user.getCant}"></td>
+            <td th:text="${user.getLugar}"></td>
+            <td th:text="${user.getArtista}"></td>
+            <td>
+                <a th:href="@{/delete/{id}(id=${user.getId})}">Delete</a>
+            </td>
+        </tr>
+    </th:block>
+</tbody>
+</table>
+</div>
+<footer th:replace="layout/plantilla :: footer"/>
+</body>
+</html>
